@@ -9,7 +9,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
-
 public class CsvReaderServiceImplTest {
     private static final String FILE_NAME = "src/main/resources/test.csv";
     private static final String EMPTY_FILE_NAME = "src/main/resources/empty.csv";
