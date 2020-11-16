@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import amazon.review.dto.ReviewDto;
 import amazon.review.service.CsvReaderService;
+import amazon.review.service.ParserService;
 import amazon.review.service.impl.CsvParserServiceImpl;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -17,6 +18,8 @@ public class CsvParserServiceImplTest {
 
     @Autowired
     private CsvReaderService readerService;
+    @Autowired
+    private ParserService csvParserService;
 
     @Test
     public void parseOkLine() {
@@ -33,8 +36,7 @@ public class CsvParserServiceImplTest {
         expectedDto.setText("I have bought several of the Vitality canned dog food products"
                 + " and have found them all to be of good quality.");
         String line = readerService.read(FILE_NAME).get(0);
-        Assert.assertEquals(expectedDto,
-                new CsvParserServiceImpl().parseLine(line));
+        Assert.assertEquals(expectedDto, csvParserService.parseLine(line));
     }
 
     @Test

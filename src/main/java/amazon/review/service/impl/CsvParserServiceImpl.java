@@ -4,7 +4,9 @@ import amazon.review.dto.ReviewDto;
 import amazon.review.service.ParserService;
 import com.opencsv.CSVParser;
 import java.io.IOException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CsvParserServiceImpl implements ParserService<ReviewDto> {
     private static final int ID = 0;
     private static final int PRODUCT_ID = 1;
