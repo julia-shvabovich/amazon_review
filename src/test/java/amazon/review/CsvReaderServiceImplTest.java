@@ -1,12 +1,13 @@
 package amazon.review;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import amazon.review.service.CsvReaderService;
 import java.util.List;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 public class CsvReaderServiceImplTest {
@@ -19,10 +20,10 @@ public class CsvReaderServiceImplTest {
 
     @Test
     public void readFile() {
-        List<String> expected = List.of("1,B001E4KFG0,A3SGXH7AUHU8GW,delmartian" +
-                        ",1,1,5,1303862400,Good Quality Dog Food",
-                "2,B00813GRG4,A1D87F6ZCVE5NK,dll pa,0,0,1,1346976000,Not as Advertised," +
-                        "\"Product arrived labeled as Jumbo Salted Peanuts...\"");
+        List<String> expected = List.of("1,B001E4KFG0,A3SGXH7AUHU8GW,delmartian"
+                        + ",1,1,5,1303862400,Good Quality Dog Food",
+                "2,B00813GRG4,A1D87F6ZCVE5NK,dll pa,0,0,1,1346976000,Not as Advertised,"
+                        + "\"Product arrived labeled as Jumbo Salted Peanuts...\"");
         List<String> result = readerService.read(FILE_NAME);
         Assert.assertEquals(expected, result);
     }

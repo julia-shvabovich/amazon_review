@@ -1,5 +1,7 @@
 package amazon.review;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import amazon.review.dto.ReviewDto;
 import amazon.review.service.CsvReaderService;
 import amazon.review.service.impl.CsvParserServiceImpl;
@@ -7,7 +9,6 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 public class CsvParserServiceImplTest {
@@ -29,8 +30,8 @@ public class CsvParserServiceImplTest {
         expectedDto.setScore(5);
         expectedDto.setTime(1303862400L);
         expectedDto.setSummary("Good Quality Dog Food");
-        expectedDto.setText("I have bought several of the Vitality canned dog food products" +
-                " and have found them all to be of good quality.");
+        expectedDto.setText("I have bought several of the Vitality canned dog food products"
+                + " and have found them all to be of good quality.");
         String line = readerService.read(FILE_NAME).get(0);
         Assert.assertEquals(expectedDto,
                 new CsvParserServiceImpl().parseLine(line));
