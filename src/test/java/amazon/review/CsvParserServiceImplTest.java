@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import amazon.review.dto.ReviewDto;
 import amazon.review.service.CsvReaderService;
 import amazon.review.service.ParserService;
-import amazon.review.service.impl.CsvParserServiceImpl;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,14 +41,14 @@ public class CsvParserServiceImplTest {
     @Test
     public void parseWrongFormatLine() {
         assertThrows(RuntimeException.class, () -> {
-            new CsvParserServiceImpl().parseLine(readerService.read(WRONG_FORMAT).get(0));
+            csvParserService.parseLine(readerService.read(WRONG_FORMAT).get(0));
         });
     }
 
     @Test
     public void parseEmptyLine() {
         assertThrows(RuntimeException.class, () -> {
-            new CsvParserServiceImpl().parseLine(null);
+            csvParserService.parseLine(null);
         });
     }
 }
