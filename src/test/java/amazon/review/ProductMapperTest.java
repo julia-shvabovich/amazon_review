@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class ProductMapperTest {
     private static final ProductMapper productMapper = new ProductMapper();
+    private static final String PRODUCT_ID = "B001E4KFG0";
     private static ReviewDto emptyDto = new ReviewDto();
     private static ReviewDto reviewDtoOk;
     private static ReviewDto reviewDtoWithoutProduct;
@@ -22,7 +23,7 @@ public class ProductMapperTest {
     public static void beforeAll() throws Exception {
         reviewDtoOk = new ReviewDto();
         reviewDtoOk.setId(1L);
-        reviewDtoOk.setProductId("B001E4KFG0");
+        reviewDtoOk.setProductId(PRODUCT_ID);
         reviewDtoOk.setUserId("A3SGXH7AUHU8GW");
         reviewDtoOk.setProfileName("delmartian");
         reviewDtoOk.setHelpfulnessNumerator(1L);
@@ -48,7 +49,7 @@ public class ProductMapperTest {
 
     @Test
     public void mapOk() {
-        Product expected = new Product("B001E4KFG0");
+        Product expected = new Product(PRODUCT_ID);
         Product actual = productMapper.map(reviewDtoOk);
         Assert.assertEquals(expected, actual);
     }

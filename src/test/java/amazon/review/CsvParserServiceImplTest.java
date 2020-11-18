@@ -2,7 +2,7 @@ package amazon.review;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import amazon.review.dto.ReviewDto;
+import amazon.review.model.dto.ReviewCsvDto;
 import amazon.review.service.CsvReaderService;
 import amazon.review.service.ParserService;
 import org.junit.Assert;
@@ -22,7 +22,7 @@ public class CsvParserServiceImplTest {
 
     @Test
     public void parseOkLine() {
-        ReviewDto expectedDto = new ReviewDto();
+        ReviewCsvDto expectedDto = new ReviewCsvDto();
         expectedDto.setId(1L);
         expectedDto.setProductId("B001E4KFG0");
         expectedDto.setUserId("A3SGXH7AUHU8GW");

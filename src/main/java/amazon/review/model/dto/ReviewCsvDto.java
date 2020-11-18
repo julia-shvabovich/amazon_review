@@ -1,9 +1,9 @@
-package amazon.review.dto;
+package amazon.review.model.dto;
 
 import lombok.Data;
 
 @Data
-public class ReviewDto {
+public class ReviewCsvDto {
     private Long id;
     private String productId;
     private String userId;
