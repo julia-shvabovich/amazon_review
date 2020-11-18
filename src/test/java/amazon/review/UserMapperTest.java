@@ -1,8 +1,8 @@
 package amazon.review;
 
-import amazon.review.model.ReviewDto;
 import amazon.review.model.Role;
 import amazon.review.model.User;
+import amazon.review.model.dto.ReviewCsvDto;
 import amazon.review.model.mapper.UserMapper;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -18,13 +18,13 @@ public class UserMapperTest {
     private static final String PASSWORD = "1111";
     private static final String ROLE_NAME = "USER";
     private static final UserMapper userMapper = new UserMapper();
-    private static ReviewDto emptyDto = new ReviewDto();
-    private static ReviewDto reviewDtoOk;
-    private static ReviewDto reviewDtoWithoutUser;
+    private static ReviewCsvDto emptyDto = new ReviewCsvDto();
+    private static ReviewCsvDto reviewDtoOk;
+    private static ReviewCsvDto reviewDtoWithoutUser;
 
     @BeforeAll
     public static void beforeAll() throws Exception {
-        reviewDtoOk = new ReviewDto();
+        reviewDtoOk = new ReviewCsvDto();
         reviewDtoOk.setId(1L);
         reviewDtoOk.setProductId("B001E4KFG0");
         reviewDtoOk.setUserId("A3SGXH7AUHU8GW");
@@ -33,11 +33,11 @@ public class UserMapperTest {
         reviewDtoOk.setHelpfulnessDenominator(1L);
         reviewDtoOk.setScore(5L);
         reviewDtoOk.setTime(LocalDateTime.ofInstant(Instant.ofEpochSecond(
-                1303862400L), ZoneId.systemDefault()));
+                1346976000L), ZoneId.systemDefault()));
         reviewDtoOk.setSummary("Good Quality Dog Food");
         reviewDtoOk.setText("I have bought several of the Vitality canned dog food products");
 
-        reviewDtoWithoutUser = new ReviewDto();
+        reviewDtoWithoutUser = new ReviewCsvDto();
         reviewDtoWithoutUser.setId(2L);
         reviewDtoWithoutUser.setProductId("B001E4KFG0");
         reviewDtoWithoutUser.setHelpfulnessNumerator(0L);

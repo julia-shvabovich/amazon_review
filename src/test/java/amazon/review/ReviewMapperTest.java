@@ -1,7 +1,7 @@
 package amazon.review;
 
 import amazon.review.model.Review;
-import amazon.review.model.ReviewDto;
+import amazon.review.model.dto.ReviewCsvDto;
 import amazon.review.model.mapper.ReviewMapper;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -14,13 +14,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class ReviewMapperTest {
     private static ReviewMapper reviewMapper = new ReviewMapper();
-    private static ReviewDto emptyDto = new ReviewDto();
-    private static ReviewDto reviewDtoOk = new ReviewDto();
+    private static ReviewCsvDto emptyDto = new ReviewCsvDto();
+    private static ReviewCsvDto reviewDtoOk = new ReviewCsvDto();
 
     @BeforeAll
     public static void beforeAll() throws Exception {
         reviewMapper = new ReviewMapper();
-        reviewDtoOk = new ReviewDto();
+        reviewDtoOk = new ReviewCsvDto();
         reviewDtoOk.setId(1L);
         reviewDtoOk.setProductId("B001E4KFG0");
         reviewDtoOk.setUserId("A3SGXH7AUHU8GW");

@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import amazon.review.model.dto.ReviewCsvDto;
 import amazon.review.service.CsvReaderService;
 import amazon.review.service.ParserService;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +30,11 @@ public class CsvParserServiceImplTest {
         expectedDto.setProductId("B001E4KFG0");
         expectedDto.setUserId("A3SGXH7AUHU8GW");
         expectedDto.setProfileName("delmartian");
-        expectedDto.setHelpfulnessNumerator(1);
-        expectedDto.setHelpfulnessDenominator(1);
-        expectedDto.setScore(5);
-        expectedDto.setTime(1303862400L);
+        expectedDto.setHelpfulnessNumerator(1L);
+        expectedDto.setHelpfulnessDenominator(1L);
+        expectedDto.setScore(5L);
+        expectedDto.setTime(LocalDateTime.ofInstant(Instant.ofEpochSecond(
+                1303862400L), ZoneId.systemDefault()));
         expectedDto.setSummary("Good Quality Dog Food");
         expectedDto.setText("I have bought several of the Vitality canned dog food products"
                 + " and have found them all to be of good quality.");

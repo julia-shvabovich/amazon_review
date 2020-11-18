@@ -4,6 +4,9 @@ import amazon.review.model.dto.ReviewCsvDto;
 import amazon.review.service.ParserService;
 import com.opencsv.CSVParser;
 import java.io.IOException;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,22 +25,23 @@ public class CsvParserServiceImpl implements ParserService<ReviewCsvDto> {
     @Override
     public ReviewCsvDto parseLine(String line) {
         CSVParser csvParser = new CSVParser();
-        ReviewCsvDto reviewCsvDto = new ReviewCsvDto();
+        ReviewCsvDto reviewDto = new ReviewCsvDto();
         try {
             String[] values = csvParser.parseLine(line);
-            reviewCsvDto.setId(Long.parseLong(values[ID].trim()));
-            reviewCsvDto.setProductId(values[PRODUCT_ID].trim());
-            reviewCsvDto.setUserId(values[USER_ID].trim());
-            reviewCsvDto.setProfileName(values[PROFILE_NAME].trim());
-            reviewCsvDto.setHelpfulnessNumerator(Integer.parseInt(values[NUMERATOR].trim()));
-            reviewCsvDto.setHelpfulnessDenominator(Integer.parseInt(values[DENOMINATOR].trim()));
-            reviewCsvDto.setScore(Integer.parseInt(values[SCORE].trim()));
-            reviewCsvDto.setTime(Long.parseLong(values[TIME].trim()));
-            reviewCsvDto.setSummary(values[SUMMARY].trim());
-            reviewCsvDto.setText(values[TEXT].trim());
+            reviewDto.setId(Long.parseLong(values[ID].trim()));
+            reviewDto.setProductId(values[PRODUCT_ID].trim());
+            reviewDto.setUserId(values[USER_ID].trim());
+            reviewDto.setProfileName(values[PROFILE_NAME].trim());
+            reviewDto.setHelpfulnessNumerator(Long.parseLong(values[NUMERATOR].trim()));
+            reviewDto.setHelpfulnessDenominator(Long.parseLong(values[DENOMINATOR].trim()));
+            reviewDto.setScore(Long.parseLong(values[SCORE].trim()));
+            reviewDto.setTime(LocalDateTime.ofInstant(Instant.ofEpochSecond(
+                    Long.parseLong(values[TIME].trim())), ZoneId.systemDefault()));
+            reviewDto.setSummary(values[SUMMARY].trim());
+            reviewDto.setText(values[TEXT].trim());
         } catch (IOException e) {
             throw new RuntimeException("Couldn't parse the line " + line, e);
         }
-        return reviewCsvDto;
+        return reviewDto;
     }
 }

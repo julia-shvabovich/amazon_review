@@ -1,12 +1,12 @@
 package amazon.review.model.mapper;
 
 import amazon.review.model.Review;
-import amazon.review.model.ReviewDto;
+import amazon.review.model.dto.ReviewCsvDto;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ReviewMapper {
-    public Review map(ReviewDto reviewDto) {
+    public Review map(ReviewCsvDto reviewDto) {
         Review review = new Review();
         review.setHelpfulnessNumerator(reviewDto.getHelpfulnessNumerator());
         review.setHelpfulnessDenominator(reviewDto.getHelpfulnessDenominator());

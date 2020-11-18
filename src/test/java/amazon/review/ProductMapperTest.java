@@ -1,7 +1,7 @@
 package amazon.review;
 
 import amazon.review.model.Product;
-import amazon.review.model.ReviewDto;
+import amazon.review.model.dto.ReviewCsvDto;
 import amazon.review.model.mapper.ProductMapper;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -15,13 +15,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class ProductMapperTest {
     private static final ProductMapper productMapper = new ProductMapper();
     private static final String PRODUCT_ID = "B001E4KFG0";
-    private static ReviewDto emptyDto = new ReviewDto();
-    private static ReviewDto reviewDtoOk;
-    private static ReviewDto reviewDtoWithoutProduct;
+    private static ReviewCsvDto emptyDto = new ReviewCsvDto();
+    private static ReviewCsvDto reviewDtoOk;
+    private static ReviewCsvDto reviewDtoWithoutProduct;
 
     @BeforeAll
     public static void beforeAll() throws Exception {
-        reviewDtoOk = new ReviewDto();
+        reviewDtoOk = new ReviewCsvDto();
         reviewDtoOk.setId(1L);
         reviewDtoOk.setProductId(PRODUCT_ID);
         reviewDtoOk.setUserId("A3SGXH7AUHU8GW");
@@ -30,11 +30,11 @@ public class ProductMapperTest {
         reviewDtoOk.setHelpfulnessDenominator(1L);
         reviewDtoOk.setScore(5L);
         reviewDtoOk.setTime(LocalDateTime.ofInstant(Instant.ofEpochSecond(
-                1303862400L), ZoneId.systemDefault()));
+                1346976000L), ZoneId.systemDefault()));
         reviewDtoOk.setSummary("Good Quality Dog Food");
         reviewDtoOk.setText("I have bought several of the Vitality canned dog food products");
 
-        reviewDtoWithoutProduct = new ReviewDto();
+        reviewDtoWithoutProduct = new ReviewCsvDto();
         reviewDtoWithoutProduct.setId(2L);
         reviewDtoWithoutProduct.setUserId("A1D87F6ZCVE5NK");
         reviewDtoWithoutProduct.setProfileName("dll pa");
