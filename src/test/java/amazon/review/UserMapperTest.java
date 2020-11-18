@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class UserMapperTest {
-    private static final String PASSWORD = "1111";
+    private static final String DEFAULT_PASSWORD = "1111";
     private static final String ROLE_NAME = "USER";
     private static final UserMapper userMapper = new UserMapper();
     private static ReviewCsvDto emptyDto = new ReviewCsvDto();
@@ -54,7 +54,7 @@ public class UserMapperTest {
         User expected = new User();
         expected.setExternalId("A3SGXH7AUHU8GW");
         expected.setProfileName("delmartian");
-        expected.setPassword(PASSWORD);
+        expected.setPassword(DEFAULT_PASSWORD);
         expected.setRoles(Set.of(Role.of(ROLE_NAME)));
         User actual = userMapper.map(reviewDtoOk);
         Assert.assertEquals(expected, actual);
@@ -63,7 +63,7 @@ public class UserMapperTest {
     @Test
     public void mapEmptyDto() {
         User expected = new User();
-        expected.setPassword(PASSWORD);
+        expected.setPassword(DEFAULT_PASSWORD);
         expected.setRoles(Set.of(Role.of(ROLE_NAME)));
         User actual = userMapper.map(emptyDto);
         Assert.assertEquals(expected, actual);
@@ -72,7 +72,7 @@ public class UserMapperTest {
     @Test
     public void mapDtoWithoutUser() {
         User expected = new User();
-        expected.setPassword(PASSWORD);
+        expected.setPassword(DEFAULT_PASSWORD);
         expected.setRoles(Set.of(Role.of(ROLE_NAME)));
         User actual = userMapper.map(reviewDtoWithoutUser);
         Assert.assertEquals(expected, actual);
