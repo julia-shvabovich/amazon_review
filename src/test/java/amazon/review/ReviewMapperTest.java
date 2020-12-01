@@ -44,14 +44,14 @@ public class ReviewMapperTest {
                 1303862400L), ZoneId.systemDefault()));
         expected.setSummary("Good Quality Dog Food");
         expected.setText("I have bought several of the Vitality canned dog food products");
-        Review actual = reviewMapper.map(reviewDtoOk);
+        Review actual = reviewMapper.mapToReview(reviewDtoOk);
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void mapEmptyOk() {
         Review expected = new Review();
-        Review actual = reviewMapper.map(emptyDto);
+        Review actual = reviewMapper.mapToReview(emptyDto);
         Assert.assertEquals(expected, actual);
     }
 }

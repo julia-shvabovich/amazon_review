@@ -50,21 +50,21 @@ public class ProductMapperTest {
     @Test
     public void mapOk() {
         Product expected = new Product(PRODUCT_ID);
-        Product actual = productMapper.map(reviewDtoOk);
+        Product actual = productMapper.mapToProduct(reviewDtoOk);
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void mapEmptyDto() {
         Product expected = new Product();
-        Product actual = productMapper.map(emptyDto);
+        Product actual = productMapper.mapToProduct(emptyDto);
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void mapDtoWithoutProduct() {
         Product expected = new Product();
-        Product actual = productMapper.map(reviewDtoWithoutProduct);
+        Product actual = productMapper.mapToProduct(reviewDtoWithoutProduct);
         Assert.assertEquals(expected, actual);
     }
 }

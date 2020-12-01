@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CsvReaderServiceImpl implements CsvReaderService {
-
     @Override
     public List<String> read(String filePath) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
