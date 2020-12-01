@@ -14,6 +14,7 @@ public class ReviewServiceImpl implements ReviewService {
         this.reviewRepository = reviewRepository;
     }
 
+    @Override
     public void saveAll(List<Review> comments) {
         reviewRepository.saveAll(comments);
     }

@@ -56,7 +56,7 @@ public class UserMapperTest {
         expected.setProfileName("delmartian");
         expected.setPassword(DEFAULT_PASSWORD);
         expected.setRoles(Set.of(Role.of(ROLE_NAME)));
-        User actual = userMapper.map(reviewDtoOk);
+        User actual = userMapper.mapToUser(reviewDtoOk);
         Assert.assertEquals(expected, actual);
     }
 
@@ -65,7 +65,7 @@ public class UserMapperTest {
         User expected = new User();
         expected.setPassword(DEFAULT_PASSWORD);
         expected.setRoles(Set.of(Role.of(ROLE_NAME)));
-        User actual = userMapper.map(emptyDto);
+        User actual = userMapper.mapToUser(emptyDto);
         Assert.assertEquals(expected, actual);
     }
 
@@ -74,7 +74,7 @@ public class UserMapperTest {
         User expected = new User();
         expected.setPassword(DEFAULT_PASSWORD);
         expected.setRoles(Set.of(Role.of(ROLE_NAME)));
-        User actual = userMapper.map(reviewDtoWithoutUser);
+        User actual = userMapper.mapToUser(reviewDtoWithoutUser);
         Assert.assertEquals(expected, actual);
     }
 }
